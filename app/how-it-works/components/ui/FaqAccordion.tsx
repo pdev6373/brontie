@@ -39,7 +39,7 @@ const faqs: FAQ[] = [
     answer: (
       <p className="text-gray-600 text-sm leading-relaxed">
         Cafés receive automatic payouts{' '}
-        <span className="text-gray-600 text-sm leading-relaxed font-semibold">
+        <span className="text-gray-600 text-sm leading-relaxed font-bold">
           twice a month
         </span>{' '}
         through Stripe Connect, with a summary of all redemptions included. No
