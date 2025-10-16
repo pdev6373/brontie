@@ -10,12 +10,11 @@ const lobster = Lobster({
 });
 
 export default function Home() {
-
   return (
     <div className={`${lobster.variable} home-page-main-wrapper`}>
       <div className="bg-wrapper-area overflow-hidden">
         <BannerSection />
-        
+
         {/* Centered CTA Button */}
         <section className="centered-cta-section py-16 md:py-20 relative">
           <div className="custom-container">
@@ -29,10 +28,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
-        <HowItWorksSection />
 
-        
+        <HowItWorksSection />
       </div>
     </div>
   );
