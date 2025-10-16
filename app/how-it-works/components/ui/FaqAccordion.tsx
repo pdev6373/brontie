@@ -1,10 +1,10 @@
 'use client';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Image from 'next/image';
 
 type FAQ = {
   question: string;
-  answer: string;
+  answer: ReactNode;
 };
 
 const faqs: FAQ[] = [
@@ -36,8 +36,16 @@ const faqs: FAQ[] = [
   },
   {
     question: 'When do cafés get paid?',
-    answer:
-      'Cafés receive automatic payouts twice a month through Stripe Connect, with a summary of all redemptions included. No paperwork, no chasing — it’s all handled securely in the background.',
+    answer: (
+      <p className="text-gray-600 text-sm leading-relaxed">
+        Cafés receive automatic payouts{' '}
+        <span className="text-gray-600 text-sm leading-relaxed font-bold">
+          twice a month
+        </span>{' '}
+        through Stripe Connect, with a summary of all redemptions included. No
+        paperwork, no chasing — it’s all handled securely in the background.
+      </p>
+    ),
   },
 ];
 
@@ -79,9 +87,9 @@ export default function FaqAccordion() {
             }}
           >
             <div className="min-w-0 overflow-hidden">
-              <p className="px-4 lg:px-5 xl:px-6 pb-4 lg:pb-5 text-gray-600 text-sm leading-relaxed">
+              <div className="px-4 lg:px-5 xl:px-6 pb-4 lg:pb-5 text-gray-600 text-sm leading-relaxed">
                 {faq.answer}
-              </p>
+              </div>
             </div>
           </div>
         </div>
