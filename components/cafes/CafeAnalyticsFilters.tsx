@@ -15,7 +15,7 @@ export default function CafeAnalyticsFilters({
   onDateFromChange,
   dateTo,
   onDateToChange,
-  onClearFilters
+  onClearFilters,
 }: CafeAnalyticsFiltersProps) {
   const MIN_START_DATE = useMemo(() => '2025-09-26', []);
 
@@ -79,5 +79,3 @@ export default function CafeAnalyticsFilters({
     </div>
   );
 }
-
-

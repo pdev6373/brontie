@@ -20,7 +20,7 @@ export default function AnalyticsFilters({
   onDateFromChange,
   dateTo,
   onDateToChange,
-  onClearFilters
+  onClearFilters,
 }: AnalyticsFiltersProps) {
   const MIN_START_DATE = '2025-09-26'; // 2025-09-26T08:16:00Z (date inputs ignore time)
 

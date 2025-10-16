@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { MerchantLocation, LocationFormData, IOpeningHours, IAccessibility } from '@/types/merchant';
+import {
+  MerchantLocation,
+  LocationFormData,
+  IOpeningHours,
+  IAccessibility,
+} from '@/types/merchant';
 
 interface LocationModalProps {
   isOpen: boolean;
@@ -10,8 +15,24 @@ interface LocationModalProps {
   onClose: () => void;
 }
 
-const DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as const;
-const DAY_LABELS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const DAYS = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+  'sunday',
+] as const;
+const DAY_LABELS = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
 
 export default function LocationModal({
   isOpen,
@@ -19,28 +40,36 @@ export default function LocationModal({
   formData,
   onFormDataChange,
   onSubmit,
-  onClose
+  onClose,
 }: LocationModalProps) {
-  const [activeTab, setActiveTab] = useState<'basic' | 'hours' | 'accessibility'>('basic');
+  const [activeTab, setActiveTab] = useState<
+    'basic' | 'hours' | 'accessibility'
+  >('basic');
 
   if (!isOpen) return null;
 
-
-  const handleOpeningHoursChange = (day: keyof IOpeningHours, field: 'open' | 'close' | 'closed', value: string | boolean) => {
+  const handleOpeningHoursChange = (
+    day: keyof IOpeningHours,
+    field: 'open' | 'close' | 'closed',
+    value: string | boolean,
+  ) => {
     const updatedHours = {
       ...formData.openingHours,
       [day]: {
         ...formData.openingHours[day],
-        [field]: value
-      }
+        [field]: value,
+      },
     };
     onFormDataChange({ ...formData, openingHours: updatedHours });
   };
 
-  const handleAccessibilityChange = (field: keyof IAccessibility, value: boolean) => {
+  const handleAccessibilityChange = (
+    field: keyof IAccessibility,
+    value: boolean,
+  ) => {
     const updatedAccessibility = {
       ...formData.accessibility,
-      [field]: value
+      [field]: value,
     };
     onFormDataChange({ ...formData, accessibility: updatedAccessibility });
   };
@@ -57,21 +86,33 @@ export default function LocationModal({
           <button
             type="button"
             onClick={() => setActiveTab('basic')}
-            className={`pb-2 px-1 ${activeTab === 'basic' ? 'border-b-2 border-amber-500 text-amber-600' : 'text-gray-600'}`}
+            className={`pb-2 px-1 ${
+              activeTab === 'basic'
+                ? 'border-b-2 border-amber-500 text-amber-600'
+                : 'text-gray-600'
+            }`}
           >
             Basic Info
           </button>
           <button
             type="button"
             onClick={() => setActiveTab('hours')}
-            className={`pb-2 px-1 ${activeTab === 'hours' ? 'border-b-2 border-amber-500 text-amber-600' : 'text-gray-600'}`}
+            className={`pb-2 px-1 ${
+              activeTab === 'hours'
+                ? 'border-b-2 border-amber-500 text-amber-600'
+                : 'text-gray-600'
+            }`}
           >
             Opening Hours
           </button>
           <button
             type="button"
             onClick={() => setActiveTab('accessibility')}
-            className={`pb-2 px-1 ${activeTab === 'accessibility' ? 'border-b-2 border-amber-500 text-amber-600' : 'text-gray-600'}`}
+            className={`pb-2 px-1 ${
+              activeTab === 'accessibility'
+                ? 'border-b-2 border-amber-500 text-amber-600'
+                : 'text-gray-600'
+            }`}
           >
             Accessibility
           </button>
@@ -83,32 +124,47 @@ export default function LocationModal({
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Location Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Location Name
+                  </label>
                   <input
                     type="text"
                     value={formData.name}
-                    onChange={(e) => onFormDataChange({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      onFormDataChange({ ...formData, name: e.target.value })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 text-black"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number
+                  </label>
                   <input
                     type="tel"
                     value={formData.phoneNumber}
-                    onChange={(e) => onFormDataChange({ ...formData, phoneNumber: e.target.value })}
+                    onChange={(e) =>
+                      onFormDataChange({
+                        ...formData,
+                        phoneNumber: e.target.value,
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 text-black"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Address
+                </label>
                 <input
                   type="text"
                   value={formData.address}
-                  onChange={(e) => onFormDataChange({ ...formData, address: e.target.value })}
+                  onChange={(e) =>
+                    onFormDataChange({ ...formData, address: e.target.value })
+                  }
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 text-black"
                   required
                 />
@@ -116,10 +172,14 @@ export default function LocationModal({
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">County *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    County *
+                  </label>
                   <select
                     value={formData.county}
-                    onChange={(e) => onFormDataChange({ ...formData, county: e.target.value })}
+                    onChange={(e) =>
+                      onFormDataChange({ ...formData, county: e.target.value })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 text-black"
                     required
                   >
@@ -153,27 +213,34 @@ export default function LocationModal({
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Zip Code *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Zip Code *
+                  </label>
                   <input
                     type="text"
                     value={formData.zipCode}
-                    onChange={(e) => onFormDataChange({ ...formData, zipCode: e.target.value })}
+                    onChange={(e) =>
+                      onFormDataChange({ ...formData, zipCode: e.target.value })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 text-black"
                     required
                   />
                 </div>
               </div>
-
-
             </div>
           )}
 
           {/* Opening Hours Tab */}
           {activeTab === 'hours' && (
             <div className="space-y-4">
-              <p className="text-sm text-gray-600 mb-4">Set the opening hours for each day of the week</p>
+              <p className="text-sm text-gray-600 mb-4">
+                Set the opening hours for each day of the week
+              </p>
               {DAYS.map((day, index) => (
-                <div key={day} className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+                <div
+                  key={day}
+                  className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg"
+                >
                   <div className="w-20 text-sm font-medium text-gray-700">
                     {DAY_LABELS[index]}
                   </div>
@@ -181,7 +248,13 @@ export default function LocationModal({
                     <input
                       type="checkbox"
                       checked={formData.openingHours[day].closed}
-                      onChange={(e) => handleOpeningHoursChange(day, 'closed', e.target.checked)}
+                      onChange={(e) =>
+                        handleOpeningHoursChange(
+                          day,
+                          'closed',
+                          e.target.checked,
+                        )
+                      }
                       className="mr-2"
                     />
                     <span className="text-sm text-gray-600">Closed</span>
@@ -193,7 +266,13 @@ export default function LocationModal({
                         <input
                           type="time"
                           value={formData.openingHours[day].open}
-                          onChange={(e) => handleOpeningHoursChange(day, 'open', e.target.value)}
+                          onChange={(e) =>
+                            handleOpeningHoursChange(
+                              day,
+                              'open',
+                              e.target.value,
+                            )
+                          }
                           className="px-2 py-1 border border-gray-300 rounded text-sm text-black"
                         />
                       </div>
@@ -202,7 +281,13 @@ export default function LocationModal({
                         <input
                           type="time"
                           value={formData.openingHours[day].close}
-                          onChange={(e) => handleOpeningHoursChange(day, 'close', e.target.value)}
+                          onChange={(e) =>
+                            handleOpeningHoursChange(
+                              day,
+                              'close',
+                              e.target.value,
+                            )
+                          }
                           className="px-2 py-1 border border-gray-300 rounded text-sm text-black"
                         />
                       </div>
@@ -216,14 +301,24 @@ export default function LocationModal({
           {/* Accessibility Tab */}
           {activeTab === 'accessibility' && (
             <div className="space-y-4">
-              <p className="text-sm text-gray-600 mb-4">Select the accessibility features available at this location</p>
+              <p className="text-sm text-gray-600 mb-4">
+                Select the accessibility features available at this location
+              </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.entries(formData.accessibility).map(([key, value]) => (
-                  <label key={key} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                  <label
+                    key={key}
+                    className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg"
+                  >
                     <input
                       type="checkbox"
                       checked={value}
-                      onChange={(e) => handleAccessibilityChange(key as keyof IAccessibility, e.target.checked)}
+                      onChange={(e) =>
+                        handleAccessibilityChange(
+                          key as keyof IAccessibility,
+                          e.target.checked,
+                        )
+                      }
                       className="rounded"
                     />
                     <span className="text-sm text-gray-700 capitalize">
