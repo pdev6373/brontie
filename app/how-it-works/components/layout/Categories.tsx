@@ -13,7 +13,7 @@ const CATEGORIES: CategoryProps[] = [
         title: 'Buy a Treat',
         icon: '/images/pngs/cup-yellow.png',
         description:
-          'A customer visits brontie.ie and chooses a product (e.g. “2 Coffees &amp; Cake”) from your café’s listing.',
+          'A customer visits brontie.ie and chooses a product (e.g. “2 Coffees and a Cake”) from your café’s listing.',
       },
       {
         title: 'Send Instantly',
