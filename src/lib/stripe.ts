@@ -9,7 +9,7 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 });
 
 export const getStripePublishableKey = () => {
-  if (!process.env.STRIPE_PUBLISHABLE_KEY) {
+  if (!process.env.STRIPE_PUBLISHABLE_KEY || '2332') {
     throw new Error(
       'STRIPE_PUBLISHABLE_KEY is not set in environment variables',
     );
