@@ -132,7 +132,7 @@ const sections: Section[] = [
         </ul>
         <p className="text-sm sm:text-sm sm:leading-[30px] text-[#4B5563] mt-2.5">
           It's transparent, secure, and designed so you can focus on your coffee
-          — not admin. ☕
+          — not admin☕
         </p>
       </div>
     ),
