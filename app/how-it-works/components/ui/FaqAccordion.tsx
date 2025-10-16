@@ -87,9 +87,9 @@ export default function FaqAccordion() {
             }}
           >
             <div className="min-w-0 overflow-hidden">
-              <p className="px-4 lg:px-5 xl:px-6 pb-4 lg:pb-5 text-gray-600 text-sm leading-relaxed">
+              <div className="px-4 lg:px-5 xl:px-6 pb-4 lg:pb-5 text-gray-600 text-sm leading-relaxed">
                 {faq.answer}
-              </p>
+              </div>
             </div>
           </div>
         </div>
